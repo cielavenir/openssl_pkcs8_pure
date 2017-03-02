@@ -23,7 +23,7 @@
 
 ## Usage
 * Please check spec/openssl_pkcs8_pure.spec as an example.
-* Also you can refer to ctouch/zip.rb (the first motivation is that Chrome WebStore only accepts PKCS8 key).
+* Also you can refer to [ctouch/zip.rb](https://github.com/cielavenir/ctouch/blob/master/support/zip.rb) (the first motivation is that Chrome WebStore only accepts PKCS8 key).
 
 ## Contributing to openssl_pkcs8_pure
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.

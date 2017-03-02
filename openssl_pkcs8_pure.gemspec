@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "openssl_pkcs8_pure"
-  spec.version       = "0.0.0.1"
+  spec.version       = "0.0.0.2"
   spec.authors       = ["cielavenir"]
   spec.email         = ["cielartisan@gmail.com"]
   spec.description   = "OpenSSL::PKey::[DSA/RSA/EC]#to_pem_pkcs8 written in Ruby"
