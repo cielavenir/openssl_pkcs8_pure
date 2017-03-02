@@ -9,7 +9,9 @@
 require 'openssl'
 require 'base64'
 
+# See http://ruby-doc.org/stdlib/libdoc/openssl/rdoc/OpenSSL/PKey/DSA.html
 class OpenSSL::PKey::DSA
+	# Returns DSA (private) key in PKCS#8 DER format.
 	def to_der_pkcs8
 		#if public, just use x509 default output
 		return to_der if !private?
@@ -23,6 +25,7 @@ class OpenSSL::PKey::DSA
 			OpenSSL::ASN1::OctetString(asn1[5].to_der)
 		]).to_der
 	end
+	# Returns DSA (private) key in PKCS#8 PEM format.
 	def to_pem_pkcs8
 		return to_pem if !private?
 		body=RUBY_VERSION<'1.9' ? Base64.encode64(to_der_pkcs8) : Base64.strict_encode64(to_der_pkcs8).chars.each_slice(64).map(&:join).join("\n")+"\n"
@@ -30,7 +33,9 @@ class OpenSSL::PKey::DSA
 	end
 end
 
+# See http://ruby-doc.org/stdlib/libdoc/openssl/rdoc/OpenSSL/PKey/RSA.html
 class OpenSSL::PKey::RSA
+	# Returns RSA (private) key in PKCS#8 DER format.
 	def to_der_pkcs8
 		#if public, just use x509 default output
 		return to_der if !private?
@@ -40,6 +45,7 @@ class OpenSSL::PKey::RSA
 			OpenSSL::ASN1::OctetString(to_der)
 		]).to_der
 	end
+	# Returns RSA (private) key in PKCS#8 PEM format.
 	def to_pem_pkcs8
 		return to_pem if !private?
 		body=RUBY_VERSION<'1.9' ? Base64.encode64(to_der_pkcs8) : Base64.strict_encode64(to_der_pkcs8).chars.each_slice(64).map(&:join).join("\n")+"\n"
@@ -47,7 +53,9 @@ class OpenSSL::PKey::RSA
 	end
 end
 
+# See http://ruby-doc.org/stdlib/libdoc/openssl/rdoc/OpenSSL/PKey/EC.html
 class OpenSSL::PKey::EC
+	# Returns EC (private) key in PKCS#8 DER format.
 	def to_der_pkcs8
 		#[todo] OpenSSL::PKey::EC#public_key does not respond to to_pem
 		#return to_der if !private?
@@ -62,6 +70,7 @@ class OpenSSL::PKey::EC
 			OpenSSL::ASN1::OctetString(asn1.to_der)
 		]).to_der
 	end
+	# Returns EC (private) key in PKCS#8 PEM format.
 	def to_pem_pkcs8
 		#return to_pem if !private?
 		body=RUBY_VERSION<'1.9' ? Base64.encode64(to_der_pkcs8) : Base64.strict_encode64(to_der_pkcs8).chars.each_slice(64).map(&:join).join("\n")+"\n"

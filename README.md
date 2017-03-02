@@ -11,6 +11,10 @@
 * rubinius
 * (Possibly) ironruby / macruby / topaz etc
 
+## Caveats
+* Passphrase is not supported yet.
+* On Ruby 1.8, the output PEM's Base64 folding is different from original openssl.
+
 ## Binary distribution
 * https://rubygems.org/gems/openssl_pkcs8_pure
 
