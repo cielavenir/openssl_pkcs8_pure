@@ -16,7 +16,6 @@ class OpenSSL::PKey::DSA
 		#if public, just use x509 default output
 		return to_der if !private?
 		asn1=OpenSSL::ASN1.decode(to_der).to_a
-		STDERR.puts asn1.inspect
 		OpenSSL::ASN1::Sequence([
 			OpenSSL::ASN1::Integer(0),
 			OpenSSL::ASN1::Sequence([
@@ -40,10 +39,9 @@ class OpenSSL::PKey::RSA
 	def to_der_pkcs8
 		#if public, just use x509 default output
 		return to_der if !private?
-		null=defined?(RUBY_ENGINE)&&RUBY_ENGINE=='jruby' ? OpenSSL::ASN1::Null.new : OpenSSL::ASN1::Null(nil)
 		OpenSSL::ASN1::Sequence([
 			OpenSSL::ASN1::Integer(0),
-			OpenSSL::ASN1::Sequence([OpenSSL::ASN1::ObjectId("rsaEncryption"),null]),
+			OpenSSL::ASN1::Sequence([OpenSSL::ASN1::ObjectId("rsaEncryption"),OpenSSL::ASN1::Null.new(nil)]),
 			OpenSSL::ASN1::OctetString(to_der)
 		]).to_der
 	end

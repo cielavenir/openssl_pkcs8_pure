@@ -7,9 +7,8 @@
 
 ## Supported Ruby versions
 * Ruby 1.8.7 or later
-* jruby
 * rubinius
-* (Possibly) ironruby / macruby / topaz etc
+* jruby (RSA only)
 
 ## Caveats
 * Passphrase is not supported yet.
