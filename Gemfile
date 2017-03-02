@@ -12,8 +12,9 @@ group :development, :test do
 	gem 'bundler', '>= 1.0'
 	gem 'rake', '~> 10.5.0' if RUBY_VERSION < '2.0'
 	gem 'rake' if RUBY_VERSION >= '2.0'
-	gem 'json' if RUBY_VERSION < '1.9'
 	gem 'rspec'
+	gem 'json', '~> 1.0' if RUBY_VERSION < '1.9'
+	gem 'tins', '~> 1.6.0' if RUBY_VERSION < '2.0'
 	gem 'simplecov', :require => false
 	gem 'coveralls', :require => false
 end
