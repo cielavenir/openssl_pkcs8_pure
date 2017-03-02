@@ -10,7 +10,8 @@ group :development, :test do
 		gem 'rest-client', '~> 1.6.0'
 	end
 	gem 'bundler', '>= 1.0'
-	gem 'rake'
+	gem 'rake', '~> 10.5.0' if RUBY_VERSION < '1.9.3'
+	gem 'rake' if RUBY_VERSION >= '1.9.3'
 	gem 'rspec'
 	gem 'simplecov'
 	gem 'coveralls', :require => false

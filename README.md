@@ -14,6 +14,7 @@
 ## Caveats
 * Passphrase is not supported yet.
 * On Ruby 1.8, the output PEM's Base64 folding is different from original openssl.
+* This implementation is built from my own research, so it might be unstable (of course, to avoid unstability we have rspec)
 
 ## Binary distribution
 * https://rubygems.org/gems/openssl_pkcs8_pure
