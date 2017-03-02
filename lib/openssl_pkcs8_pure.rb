@@ -15,7 +15,7 @@ class OpenSSL::PKey::DSA
 	def to_der_pkcs8
 		#if public, just use x509 default output
 		return to_der if !private?
-		asn1=OpenSSL::ASN1.decode(to_der).to_a
+		asn1=OpenSSL::ASN1.decode(to_der).value
 		OpenSSL::ASN1::Sequence([
 			OpenSSL::ASN1::Integer(0),
 			OpenSSL::ASN1::Sequence([
@@ -59,7 +59,7 @@ class OpenSSL::PKey::EC
 	def to_der_pkcs8
 		#[todo] OpenSSL::PKey::EC#public_key does not respond to to_pem
 		#return to_der if !private?
-		asn1=OpenSSL::ASN1.decode(to_der).to_a
+		asn1=OpenSSL::ASN1.decode(to_der).value
 		#curve_name=asn1[2].value[0].value
 		curve_name=group.curve_name
 		asn1.delete_at(2)

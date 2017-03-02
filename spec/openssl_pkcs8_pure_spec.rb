@@ -30,7 +30,7 @@ EC_jruby_msg='OpenSSL::PKey::EC is unstable in jruby'
 describe "OpenSSL::PKey::"+type do
 	klass=OpenSSL::PKey.const_get(type)
 	it "reads PKCS1 key" do
-		if type=='EC'&&OpenSSL::PKey::EC.method(:new).arity==0
+		if type=='EC'&&OpenSSL::PKey::EC.instance_method(:initialize).arity==0
 			pending 'OpenSSL::PKey::EC.new is unusable on this platform'
 		end
 		klass.new(arc[type+'_PKCS1']).is_a?(klass).should be true
